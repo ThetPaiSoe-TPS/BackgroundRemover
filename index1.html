@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .container{
+            height: 100vh;
+            width: 100%;
+            background: #f3fbff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .img_box{
+            width: 60%;
+            margin: auto;
+            line-height: 0;
+            position: relative;
+        }
+        .img_wrap{
+            width: 20px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            overflow: hidden;
+        }
+        span{
+            width: 1px;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+            cursor: ew-resize;
+            background: #fff;
+        }
+        .arrow{
+            width: 40px;
+            top: 50%;
+            margin-left: -20px;
+            margin-top: -20px;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="img_box">
+            <img src="/background_change_img/transparent.png" alt="" width="100%">
+            <div class="img_wrap">
+                <img src="/background_change_img/original.jpg" alt="" id="org_img">
+            </div>
+            <span>
+                <img src="/background_change_img/arrow.png" class="arrow" alt="">
+            </span>
+        </div>
+    </div>
+
+    <script>
+        var img_box= document.querySelector(".img_box");
+        var img_wrap= document.querySelector(".img_wrap");
+        var org_img= document.querySelector("#org_img");
+        var arrow= document.querySelector(".arrow");
+
+        org_img.style.width= img_box.offsetWidth+ "px";
+        var img_oslft= img_box.offsetLeft;
+        img_box.onmousemove= (e)=>{
+            var box_width= (e.pageX- img_oslft)+ "px";
+            img_wrap.style.width= box_width;
+            arrow.style.left= box_width;
+        }
+
+    </script>
+</body>
+</html>
